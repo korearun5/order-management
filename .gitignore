@@ -33,3 +33,9 @@ logs/
 
 # Env files
 .env
+
+# Spring Cloud Config generated cache directories
+config-cache/
+config-repo-cache/
+config-server/config-cache/
+config-server/config-repo-cache/

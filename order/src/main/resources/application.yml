@@ -1,19 +1,17 @@
 server:
-  port: 8080
+  port: 8888
 
 spring:
   application:
-    name: order-service
-  datasource:
-    url: jdbc:mysql://mysql-db:3306/order_db
-    username: root
-    password: securepassword
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      maximum-pool-size: 10
-      connection-timeout: 3000
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/korearun5/order-management-config.git
+          default-label: main
+          clone-on-start: true
+          force-pull: true
 
-zeebe:
-  client:
-    broker.gateway-address: zeebe-broker:26500
-    security.plaintext: true
+management:
+  endpoints.web.exposure.include: health,info,metrics

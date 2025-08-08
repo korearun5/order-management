@@ -12,6 +12,8 @@
         <jib.image.prefix>ghcr.io/korearun5</jib.image.prefix>
     </properties>
 
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -32,16 +34,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>3.4.0</version>
                 <configuration>
-                    <to>
-                        <image>${jib.image.prefix}/config-server:${project.version}</image>
-                    </to>
+                    <mainClass>com.arun.ordermgmt.configserver.ConfigServerApplication</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

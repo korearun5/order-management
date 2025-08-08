@@ -9,17 +9,22 @@ spring:
       server:
         git:
           uri: https://github.com/korearun5/order-management-config.git
-          search-paths: '{application}'
-          clone-on-start: true
-          force-pull: true
           default-label: main
-          timeout: 10
+          basedir: ./config-cache
+          force-pull: true
+          clone-on-start: true
+          search-paths: '{application}'
+          timeout: 30
+          delete-untracked-branches: true
 
 management:
   endpoints:
     web:
       exposure:
         include: health,info,refresh,prometheus
-  metrics:
-    tags:
-      application: ${spring.application.name}
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.config.server: DEBUG
+    org.springframework.cloud.config.server.environment: TRACE

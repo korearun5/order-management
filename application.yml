@@ -1,22 +1,9 @@
+# Local development overrides (not used in production)
 spring:
   cloud:
     config:
-      discovery:
-        enabled: true
-        service-id: config-server
-    loadbalancer:
-      retry:
-        enabled: true
+      enabled: false  # Disable config server for local testing
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka/
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,prometheus
+    enabled: false

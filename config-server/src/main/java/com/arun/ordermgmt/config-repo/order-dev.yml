@@ -1,6 +1,0 @@
-# config-repo/order-service-dev.yml (dev profile override)
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost/orderdb_dev
-    username: dev_user
-    password: devpass
