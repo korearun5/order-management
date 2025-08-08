@@ -1,7 +1,6 @@
 server:
   port: 8888
 
-
 spring:
   application:
     name: config-server
@@ -9,21 +8,18 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/korearun5/config-repo
-          username: korearun5
-          password: ${GIT_TOKEN}
-          ignore-local-ssh-settings: true
-          private-key: |
-            -----BEGIN RSA PRIVATE KEY-----
-            MIIEpAIBAAKCAQEAszmC...
-            ... (your private key contents) ...
-            -----END RSA PRIVATE KEY-----
-          skipSslValidation: false
-          # (If using a private repo, you can set credentials or a token here)
+          uri: https://github.com/korearun5/order-management-config.git
+          search-paths: '{application}'
           clone-on-start: true
+          force-pull: true
           default-label: main
+          timeout: 10
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}

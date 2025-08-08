@@ -1,45 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
-        <relativePath/>
-    </parent>
 
     <groupId>com.arun.ordermgmt</groupId>
     <artifactId>order-management</artifactId>
-    <version>1.0.0</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Multi-Module Spring Boot Project Parent</name>
 
-    <!-- ADD MISSING PROPERTIES HERE -->
+    <modules>
+        <module>config-server</module>
+        <module>eureka-server</module>
+        <module>api-gateway</module>
+       <!-- <module>auth-server</module> -->
+        <module>order</module>
+        <module>inventory</module>
+        <module>billing</module>
+        <module>common</module>
+    </modules>
+
     <properties>
-        <!-- Java & Build -->
         <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- Framework Versions -->
         <spring-boot.version>3.2.5</spring-boot.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Boot BOM -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>3.2.5</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Only keep Spring Cloud BOM import -->
+
+            <!-- Spring Cloud BOM -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -47,29 +45,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-<!--            <dependency>
-                <groupId>io.camunda</groupId>
-                <artifactId>spring-boot-starter-camunda-sdk</artifactId>
-                <version>8.3.0</version>
-            </dependency>
-            <dependency>
-                <groupId>io.opentelemetry.instrumentation</groupId>
-                <artifactId>opentelemetry-spring-boot-starter</artifactId>
-                <version>2.3.0</version> &lt;!&ndash; Compatible with Spring Boot 3.2.5 &ndash;&gt;
-            </dependency>-->
-
         </dependencies>
     </dependencyManagement>
 
-    <modules>
-        <module>common</module>
-        <module>order</module>
-        <module>api-gateway</module>
-        <module>inventory</module>
-        <module>billing</module>
-        <module>eureka-server</module>
-        <module>config-server</module>
-        <module>auth-server</module>
-    </modules>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

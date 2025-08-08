@@ -1,5 +1,6 @@
 package com.arun.ordermgmt.order.infra;
 
+
 @Entity
 public class OutboxEvent {
     @Id

@@ -3,9 +3,10 @@ package com.arun.ordermgmt.order.domain;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Enumerated;
 
+@Entity
 public class Order {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Embedded
