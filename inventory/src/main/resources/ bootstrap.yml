@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: inventory  # or inventory-service, billing-service, etc.
+  cloud:
+    config:
+      uri: http://localhost:8888
+  profiles:
+    active: dev
+logging:
+  level:
+    root: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus

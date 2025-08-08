@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-service
+
+  cloud:
+    stream:
+      bindings:
+        orderEvents-out-0:
+          destination: order-events
+          producer:
+            use-native-encoding: true
+      kafka:
+        bindings:
+          orderEvents-out-0:
+            producer:
+              configuration:
+                value.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+  datasource:
+    url: jdbc:mysql://localhost:3306/order_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

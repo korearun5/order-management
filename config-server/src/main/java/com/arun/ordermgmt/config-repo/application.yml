@@ -1,0 +1,15 @@
+# config-repo/application.yml (shared defaults)
+spring:
+  web:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET,POST,PUT,DELETE
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"      # expose all actuator endpoints (health, info, etc.):contentReference[oaicite:4]{index=4}
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG   # override for app-specific package

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: api-gateway  # or inventory-service, billing-service, etc.
+  cloud:
+    config:
+      uri: http://localhost:8888
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+logging:
+  level:
+    root: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  profiles:
+    active: dev
