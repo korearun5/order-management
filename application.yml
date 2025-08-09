@@ -1,9 +1,0 @@
-# Local development overrides (not used in production)
-spring:
-  cloud:
-    config:
-      enabled: false  # Disable config server for local testing
-
-eureka:
-  client:
-    enabled: false
