@@ -1,4 +1,5 @@
 package com.arun.ordermgmt.order.domain;
 
-public class OrderStatus {
+public enum OrderStatus {
+    CREATED, PENDING, CONFIRMED, SHIPPED, CANCELLED, PROCESSING, COMPLETED
 }

@@ -10,7 +10,6 @@ spring:
       retry:
         initial-interval: 1000
         max-attempts: 20
-
 eureka:
   client:
     enabled: true
