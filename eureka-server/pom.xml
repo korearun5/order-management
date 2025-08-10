@@ -6,9 +6,28 @@
     <parent>
         <groupId>com.arun.ordermgmt</groupId>
         <artifactId>order-management</artifactId>
-        <version>1.0.0</version>
+        <version>1.0-SNAPSHOT</version> <!-- Consistent version -->
     </parent>
 
     <artifactId>eureka-server</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- Inherits version from parent -->
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

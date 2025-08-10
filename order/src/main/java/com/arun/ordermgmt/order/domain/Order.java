@@ -1,5 +1,6 @@
 package com.arun.ordermgmt.order.domain;
 
+import com.arun.ordermgmt.common.model.OrderStatus;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
@@ -33,22 +34,5 @@ public class Order {
     @CollectionTable(name = "order_items", joinColumns = @JoinColumn(name = "order_id"))
     private List<OrderItem> items;
 
-    // Default constructor for JPA
     public Order() {}
-}
-
-@Embeddable
-@Getter @Setter
-class OrderItem {
-    @NotNull(message = "Product ID is required")
-    private String productId;
-
-    @NotNull(message = "Quantity is required")
-    private Integer quantity;
-
-    @NotNull(message = "Price is required")
-    private Double price;
-
-    // Default constructor for JPA
-    public OrderItem() {}
 }
